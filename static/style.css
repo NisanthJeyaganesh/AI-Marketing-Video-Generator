@@ -1,0 +1,28 @@
+:root { color-scheme: dark; --bg:#0c1018; --panel:#151c28; --muted:#9ca9ba; --text:#f5f7fb; --accent:#a7f3d0; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:Inter,Segoe UI,Arial,sans-serif; background:radial-gradient(ellipse at top,#1d3040 0%,var(--bg) 55%); color:var(--text); }
+.page { width:min(900px,92%); margin:0 auto; padding:54px 0 28px; }
+.hero { max-width:740px; margin:0 auto 30px; text-align:center; }
+.eyebrow { color:var(--accent); letter-spacing:.18em; font-size:.76rem; font-weight:800; }
+h1 { font-size:clamp(2.2rem,6vw,4.4rem); line-height:1.03; margin:18px 0; letter-spacing:-.04em; }
+h1 span { color:var(--accent); }
+.subhead { color:var(--muted); font-size:1.05rem; line-height:1.7; }
+.panel,.result { background:rgba(21,28,40,.94); border:1px solid #2a3545; border-radius:22px; padding:clamp(20px,4vw,36px); box-shadow:0 24px 70px #0003; }
+.field { margin-bottom:20px; }
+label { display:block; margin-bottom:8px; font-size:.92rem; font-weight:700; }
+input,textarea,select { width:100%; border:1px solid #354255; border-radius:11px; padding:13px 14px; background:#0f1520; color:var(--text); font:inherit; }
+textarea { resize:vertical; }
+input:focus,textarea:focus,select:focus { outline:2px solid #6ee7b7; border-color:transparent; }
+small { display:block; color:var(--muted); margin-top:7px; line-height:1.5; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+button,.download { display:inline-flex; justify-content:center; align-items:center; gap:12px; width:100%; padding:15px 18px; border:0; border-radius:12px; background:var(--accent); color:#092019; font-size:1rem; font-weight:800; text-decoration:none; cursor:pointer; }
+button:hover,.download:hover { filter:brightness(.94); }
+.notice { margin:0 0 16px; padding:14px 16px; border-radius:10px; background:#392626; color:#ffd5d5; }
+.notice.error { border:1px solid #824b4b; }
+.result { margin-top:24px; }
+.result p { color:var(--muted); line-height:1.65; }
+.video-preview { display:block; width:min(100%,520px); max-height:680px; margin:20px auto; background:#000; border-radius:14px; }
+.script { padding:16px; background:#0f1520; border-radius:10px; color:var(--text)!important; }
+h2,h3 { letter-spacing:-.02em; }
+footer { text-align:center; color:#758195; font-size:.82rem; padding:28px 0 0; }
+@media(max-width:600px) { .page{padding-top:32px}.two-col{grid-template-columns:1fr}.panel,.result{border-radius:16px} }

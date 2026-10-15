@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdCraft AI | Marketing Video Generator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">AI-ASSISTED CONTENT CREATION</p>
+      <h1>Turn product photos into <span>promotional videos.</span></h1>
+      <p class="subhead">Create social-ready product ads with narration, captions, and simple motion effects.</p>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="notice {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <section class="panel">
+      <form method="post" enctype="multipart/form-data">
+        <div class="field">
+          <label for="product_name">Product name</label>
+          <input id="product_name" name="product_name" placeholder="e.g. Herbal Hair Oil" required>
+        </div>
+        <div class="field">
+          <label for="description">Product description</label>
+          <textarea id="description" name="description" rows="3" placeholder="Describe what the product is and who it is for." required></textarea>
+        </div>
+        <div class="field">
+          <label for="benefits">Key benefits (comma-separated)</label>
+          <textarea id="benefits" name="benefits" rows="2" placeholder="e.g. easy to use, travel-friendly, lightweight"></textarea>
+        </div>
+        <div class="field">
+          <label for="cta">Call to action</label>
+          <input id="cta" name="cta" value="Shop now">
+        </div>
+        <div class="field">
+          <label for="images">Product images (PNG, JPG, WEBP)</label>
+          <input id="images" name="images" type="file" accept=".png,.jpg,.jpeg,.webp" multiple required>
+          <small>Use up to 5 clear images for best results. Keep total upload size under 20 MB.</small>
+        </div>
+        <div class="two-col">
+          <div class="field">
+            <label for="aspect_ratio">Video format</label>
+            <select id="aspect_ratio" name="aspect_ratio">
+              <option value="9:16">9:16 — Reels / Shorts</option>
+              <option value="1:1">1:1 — Square post</option>
+              <option value="16:9">16:9 — YouTube / landscape</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="language">Narration language</label>
+            <select id="language" name="language">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="ta">Tamil</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit">Generate marketing video <span>→</span></button>
+      </form>
+    </section>
+
+    {% if video_url %}
+      <section class="result">
+        <h2>Your video is ready</h2>
+        <p>Preview the generated MP4 and download it when you're happy with the result.</p>
+        <video controls src="{{ video_url }}" class="video-preview"></video>
+        <a class="download" href="{{ video_url }}">Download MP4</a>
+        {% if script_preview %}
+          <h3>Generated narration script</h3>
+          <p class="script">{{ script_preview }}</p>
+        {% endif %}
+      </section>
+    {% endif %}
+    <footer>AdCraft AI · A portfolio project for automated marketing content</footer>
+  </main>
+</body>
+</html>
